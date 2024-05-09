@@ -1,14 +1,14 @@
 {
   "name": "watch-and-compile-your-sass-with-npm",
   "version": "1.0.0",
-  "description": "Article and source code for how to use npm scripts to watch and compile scss",
+  "description": "",
   "scripts": {
     "build-css": "./bin/build-css",
     "watch-css": "./bin/watch-css"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hellobrian/blogs/tree/master/watch-and-compile-your-sass-with-npm"
+    "url": "https://github.com/itayhaike/html-css"
   },
   "keywords": [
     "brian",
@@ -18,8 +18,7 @@
     "sass",
     "scss"
   ],
-  "author": "Brian Han <thisisbrianhan@gmail.com> (http://brianhanio.mybluemix.net/)",
-  "license": "MIT",
+  "author": "Itay Haike"
   "devDependencies": {
     "node-sass": "9.0.0",
     "nodemon": "3.1.0"
