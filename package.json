@@ -1,5 +1,5 @@
 {
-  "name": "itayhaike resume ",
+  "name": "watch-and-compile-your-sass-with-npm",
   "version": "1.0.0",
   "description": "Article and source code for how to use npm scripts to watch and compile scss",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/hellobrian/blogs/tree/master/watch-and-compile-your-sass-with-npm"
   },
   "keywords": [
     "brian",
@@ -18,7 +18,8 @@
     "sass",
     "scss"
   ],
-  "author": "Itay Haike"
+  "author": "Brian Han <thisisbrianhan@gmail.com> (http://brianhanio.mybluemix.net/)",
+  "license": "MIT",
   "devDependencies": {
     "node-sass": "9.0.0",
     "nodemon": "3.1.0"
