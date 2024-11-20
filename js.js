@@ -1,52 +1,43 @@
-// Add this script tag right before the closing body tag
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Add percentage text next to skills
-  document.querySelectorAll('.skills-prog li').forEach(function(skill) {
-    const percent = skill.getAttribute('data-percent');
-    const span = skill.querySelector('span');
-    span.textContent = span.textContent + ' - ' + percent + '%';
-  });
-
-  // Add percentage text to soft skills
-  document.querySelectorAll('.skills-soft li').forEach(function(skill) {
-    const percent = skill.getAttribute('data-percent');
-    const small = document.createElement('small');
-    small.textContent = percent + '%';
-    skill.appendChild(small);
-  });
-
-  // Your existing jQuery animations (optional for enhanced effect)
-  if (typeof jQuery !== 'undefined') {
-    $(".skills-prog li").find(".skills-bar").each(function(i) {
-      $(this).find(".bar").delay(i * 150).animate({
-        width: $(this).parents().attr("data-percent") + "%"
-      }, 1000, "linear", function() {
-        return $(this).css({
-          "transition-duration": ".5s"
-        });
-      });
+$(document).ready(function() {
+  // Function to set skill bars without showing percentages
+  function setSkillBars() {
+    $(".skills-prog li").each(function() {
+      var percent = $(this).attr("data-percent");
+      // Set the width directly and add the percentage text
+      $(this).find(".bar").css("width", percent + "%");
     });
+  }
 
-    $(".skills-soft li").find("svg").each(function(i) {
-      const circle = $(this).children(".cbar");
-      const r = circle.attr("r");
-      const c = Math.PI * (r * 2);
-      const percent = $(this).parent().data("percent");
-      const cbar = ((100 - percent) / 100) * c;
+  // Function to set circular progress
+  function setCircularProgress() {
+    $(".skills-soft li").each(function() {
+      var percent = $(this).data("percent");
+      var circle = $(this).find(".cbar");
+      var r = circle.attr("r");
+      var c = Math.PI * (r * 2);
+      var cbar = ((100 - percent) / 100) * c;
+      
+      // Set the circle progress
       circle.css({
-        "stroke-dashoffset": c,
+        "stroke-dashoffset": cbar,
         "stroke-dasharray": c
-      });
-      circle.delay(i * 150).animate({
-        strokeDashoffset: cbar
-      }, 1000, "linear", function() {
-        return circle.css({
-          "transition-duration": ".3s"
-        });
       });
     });
   }
+
+  // Initial setup
+  setSkillBars();
+  setCircularProgress();
+
+  // Add animation class after initial setup
+  setTimeout(function() {
+    $(".skills-prog li .bar").addClass("animated");
+    $(".skills-soft li .cbar").addClass("animated");
+  }, 50);
+
+  // Rerun on window resize or orientation change
+  $(window).on('resize orientationchange', function() {
+    setSkillBars();
+    setCircularProgress();
+  });
 });
-</script>
